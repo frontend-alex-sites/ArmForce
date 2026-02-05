@@ -218,7 +218,7 @@ body {
     border: none;
     background: none;
     cursor: pointer;
-    color: #e0e0e0;
+    color: #ffc93f;
     border-bottom: 1px solid #4d4d4d;
     transition: background-color 0.2s;
     font-size: 14px;
@@ -548,4 +548,5 @@ body {
     font-weight: Light;
     background-color: transparent;
     color: #ffc93f;
+
 }
