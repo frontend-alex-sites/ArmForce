@@ -52,7 +52,7 @@ async function loadRatingData() {
     console.log("📥 Загружаю данные рейтинга...");
     showLoading();
 
-    const response = await fetch("data/rating.json?v=" + Date.now());
+    const response = await fetch("/ArmForce/data/rating.json?v=" + Date.now());
     if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
 
     ratingData = await response.json();
@@ -366,3 +366,4 @@ document.addEventListener("DOMContentLoaded", function () {
   loadRatingData();
   setInterval(loadRatingData, 5 * 60 * 1000);
 });
+
