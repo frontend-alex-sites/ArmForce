@@ -553,8 +553,8 @@ body {
 
 .city-flag {
     position: absolute !important; /* Меняем fixed на absolute */
-    left: 50% !important;
-    top: 40px !important; /* Фиксированная высота от верха шапки */
+    left: 120% !important;
+    top: -100px !important; /* Фиксированная высота от верха шапки */
     transform: translateX(-50%) !important; /* Только по горизонтали */
     z-index: 9999 !important;
 }
@@ -572,6 +572,7 @@ body {
         text-align: center;
     }
 }
+
 
 
 
