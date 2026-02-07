@@ -551,26 +551,27 @@ body {
 
 }
 
-/* Флаг Красноярского края */
+/* Жесткое ограничение размеров */
 .city-flag {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 80px; /* Фиксируем размер контейнера */
-    height: 55px;
+    width: 80px !important;
+    height: 55px !important;
+    overflow: hidden; /* Скрывает все что вылезает */
     z-index: 1;
 }
 
 .city-flag img {
-    width: 100%; /* Занимает 100% от контейнера */
-    height: 100%;
-    object-fit: cover; /* Обрезает если нужно */
-    display: block;
-    max-width: 100%; /* Не больше контейнера */
-    max-height: 100%;
+    width: 80px !important;
+    height: 55px !important;
+    max-width: 80px !important;
+    max-height: 55px !important;
+    min-width: 80px !important;
+    min-height: 55px !important;
+    object-fit: cover;
 }
-
 /* Адаптив для телефонов */
 @media (max-width: 768px) {
     .city-flag {
