@@ -47,6 +47,7 @@ let activeSubmenu = null;
 let activeAgeSubmenu = null;
 let isMenuOpen = false;
 let ratingData = null;
+let currentOpenCategory = null; // Какая категория сейчас открыта
 
 async function loadRatingData() {
   try {
@@ -243,20 +244,77 @@ function renderAthletes(athletes, containerId, colorClass) {
   }, 100);
 }
 
-ratingButton.addEventListener("click", function (event) {
-  event.stopPropagation();
-  mainDropdown.classList.toggle("active");
-  ratingButton.classList.toggle("active");
-  isMenuOpen = mainDropdown.classList.contains("active");
-  closeAllSubmenus();
-});
+// Функция для закрытия меню других категорий
+function closeOtherCategoryMenus(clickedButton, clickedCategory) {
+  const allCategoryItems = document.querySelectorAll(".category-item");
+  const allSubmenus = document.querySelectorAll(".sub-dropdown, .age-dropdown");
+
+  // Закрываем ВСЕ подменю кроме тех, что относятся к текущей категории
+  allSubmenus.forEach((submenu) => {
+    if (submenu.dataset.category !== clickedCategory) {
+      submenu.remove();
+    }
+  });
+
+  // Сбрасываем стрелки у всех категорий кроме текущей
+  allCategoryItems.forEach((item) => {
+    if (item !== clickedButton) {
+      const icon = item.querySelector("i");
+      if (icon) {
+        icon.className = "fas fa-chevron-right";
+      }
+    }
+  });
+
+  // Если нажали на другую категорию - закрываем все текущие меню
+  if (currentOpenCategory && currentOpenCategory !== clickedCategory) {
+    closeAllSubmenus();
+  }
+
+  currentOpenCategory = clickedCategory;
+}
+
+// Функция для сброса всех стрелок категорий
+function resetAllCategoryArrows() {
+  const allCategoryItems = document.querySelectorAll(".category-item");
+  allCategoryItems.forEach((item) => {
+    const icon = item.querySelector("i");
+    if (icon) {
+      icon.className = "fas fa-chevron-right";
+    }
+  });
+  currentOpenCategory = null;
+}
+
+// Функция для сброса стрелки конкретной категории
+function resetCategoryArrow(button) {
+  const icon = button.querySelector("i");
+  if (icon) {
+    icon.className = "fas fa-chevron-right";
+  }
+  currentOpenCategory = null;
+}
 
 function createWeightSubmenu(category, colorClass, button) {
-  closeAllSubmenus();
+  // Закрываем меню других категорий
+  closeOtherCategoryMenus(button, button.id);
+
+  // Если уже открыто это же меню - закрываем его
+  if (activeSubmenu && activeSubmenu.dataset.category === category) {
+    activeSubmenu.remove();
+    activeSubmenu = null;
+    resetCategoryArrow(button);
+    return;
+  }
+
+  // Закрываем другие подменю
+  if (activeSubmenu) activeSubmenu.remove();
+  if (activeAgeSubmenu) activeAgeSubmenu.remove();
+
   const submenu = document.createElement("div");
   submenu.className = `sub-dropdown ${colorClass}`;
+  submenu.dataset.category = category;
 
-  // Берем веса из предопределенного списка
   const weights = weightCategories[category] || [];
 
   weights.forEach((weight) => {
@@ -274,8 +332,8 @@ function createWeightSubmenu(category, colorClass, button) {
       mainDropdown.classList.remove("active");
       ratingButton.classList.remove("active");
       isMenuOpen = false;
-      submenu.remove();
-      if (activeAgeSubmenu) activeAgeSubmenu.remove();
+      closeAllSubmenus();
+      resetAllCategoryArrows();
     });
 
     submenu.appendChild(weightBtn);
@@ -287,13 +345,35 @@ function createWeightSubmenu(category, colorClass, button) {
   document.body.appendChild(submenu);
   submenu.classList.add("active");
   activeSubmenu = submenu;
+
+  // Поворачиваем стрелку у текущей категории
+  const currentIcon = button.querySelector("i");
+  if (currentIcon) {
+    currentIcon.className = "fas fa-chevron-down";
+  }
+
   return submenu;
 }
 
 function createAgeSubmenu(categoryType, colorClass, button) {
+  // Закрываем меню других категорий
+  closeOtherCategoryMenus(button, button.id);
+
+  // Если уже открыто это же меню - закрываем его
+  if (activeAgeSubmenu && activeAgeSubmenu.dataset.category === categoryType) {
+    activeAgeSubmenu.remove();
+    activeAgeSubmenu = null;
+    resetCategoryArrow(button);
+    return;
+  }
+
+  // Закрываем другие подменю
   if (activeAgeSubmenu) activeAgeSubmenu.remove();
+  if (activeSubmenu) activeSubmenu.remove();
+
   const ageSubmenu = document.createElement("div");
   ageSubmenu.className = `age-dropdown ${colorClass}`;
+  ageSubmenu.dataset.category = categoryType;
 
   const ageGroups =
     categoryType === "juniors-men"
@@ -316,8 +396,6 @@ function createAgeSubmenu(categoryType, colorClass, button) {
     ageBtn.addEventListener("click", function (event) {
       event.stopPropagation();
       createWeightSubmenu(categoryKey, colorClass, button);
-      ageSubmenu.remove();
-      activeAgeSubmenu = null;
     });
 
     ageSubmenu.appendChild(ageBtn);
@@ -329,34 +407,15 @@ function createAgeSubmenu(categoryType, colorClass, button) {
   document.body.appendChild(ageSubmenu);
   ageSubmenu.classList.add("active");
   activeAgeSubmenu = ageSubmenu;
+
+  // Поворачиваем стрелку у текущей категории
+  const currentIcon = button.querySelector("i");
+  if (currentIcon) {
+    currentIcon.className = "fas fa-chevron-down";
+  }
+
   return ageSubmenu;
 }
-
-function setupCategoryHover(button, category, colorClass) {
-  button.addEventListener("mouseenter", function () {
-    if (isMenuOpen) {
-      if (category === "juniors-men" || category === "juniors-women") {
-        createAgeSubmenu(category, colorClass, button);
-      } else {
-        createWeightSubmenu(category, colorClass, button);
-      }
-    }
-  });
-
-  button.addEventListener("click", function (event) {
-    event.stopPropagation();
-    if (category === "juniors-men" || category === "juniors-women") {
-      createAgeSubmenu(category, colorClass, button);
-    } else {
-      createWeightSubmenu(category, colorClass, button);
-    }
-  });
-}
-
-setupCategoryHover(menBtn, "men", "blue");
-setupCategoryHover(juniorsMenBtn, "juniors-men", "blue");
-setupCategoryHover(womenBtn, "women", "red");
-setupCategoryHover(juniorsWomenBtn, "juniors-women", "red");
 
 function closeAllSubmenus() {
   if (activeSubmenu) {
@@ -367,8 +426,42 @@ function closeAllSubmenus() {
     activeAgeSubmenu.remove();
     activeAgeSubmenu = null;
   }
+  currentOpenCategory = null;
 }
 
+// Функция для настройки обработчиков кликов на категории
+function setupCategoryClick(button, category, colorClass) {
+  button.addEventListener("click", function (event) {
+    event.stopPropagation();
+    if (category === "juniors-men" || category === "juniors-women") {
+      createAgeSubmenu(category, colorClass, button);
+    } else {
+      createWeightSubmenu(category, colorClass, button);
+    }
+  });
+}
+
+// Основная кнопка рейтинга
+ratingButton.addEventListener("click", function (event) {
+  event.stopPropagation();
+  mainDropdown.classList.toggle("active");
+  ratingButton.classList.toggle("active");
+  isMenuOpen = mainDropdown.classList.contains("active");
+
+  // Закрываем все подменю при открытии основного меню
+  if (mainDropdown.classList.contains("active")) {
+    closeAllSubmenus();
+    resetAllCategoryArrows();
+  }
+});
+
+// Настраиваем клики на все категории
+setupCategoryClick(menBtn, "men", "blue");
+setupCategoryClick(juniorsMenBtn, "juniors-men", "blue");
+setupCategoryClick(womenBtn, "women", "red");
+setupCategoryClick(juniorsWomenBtn, "juniors-women", "red");
+
+// Закрытие меню при клике вне его
 document.addEventListener("click", function (event) {
   const isClickInRatingMenu =
     mainDropdown.contains(event.target) ||
@@ -384,22 +477,24 @@ document.addEventListener("click", function (event) {
     ratingButton.classList.remove("active");
     isMenuOpen = false;
     closeAllSubmenus();
+    resetAllCategoryArrows();
   }
 });
 
+// Закрытие меню при нажатии Escape
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     mainDropdown.classList.remove("active");
     ratingButton.classList.remove("active");
     isMenuOpen = false;
     closeAllSubmenus();
+    resetAllCategoryArrows();
   }
 });
 
+// Загрузка данных при старте
 document.addEventListener("DOMContentLoaded", function () {
   loadRatingData();
   setInterval(loadRatingData, 5 * 60 * 1000);
 });
-
-
 
