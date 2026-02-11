@@ -529,22 +529,23 @@ body {
     margin-right: 0;
 }
 
-/* Контейнер для баллов и стрелки */
+/* Контейнер для баллов и стрелки - ПК */
 .score-wrapper {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 0px;
+    gap: 12px;
     min-width: 70px;
     margin-left: auto;
+    padding-left: 0;
 }
 
-/* Баллы */
+/* Баллы - ПК */
 .rating-score {
     font-size: 18px;
     font-weight: bold;
     text-align: right;
-    min-width: 22px;
+    min-width: 50px;
 }
 
 .rating-score.blue {
@@ -759,6 +760,7 @@ body {
         gap: 0px;
     }
 }
+
 
 
 
