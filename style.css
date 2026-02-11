@@ -633,7 +633,7 @@ body {
     
     .rating-item {
         padding: 10px;
-        gap: 8px;
+        gap: 6px;
     }
     
     .city-flag {
@@ -645,25 +645,86 @@ body {
         text-align: center;
     }
     
-    /* Мобильные стрелки */
+    /* ФИКС ИМЕНИ - НИЧЕГО НЕ НАЛЕЗАЕТ */
+    .athlete-info {
+        flex: 1;
+        min-width: 0;
+        max-width: calc(100% - 160px);
+    }
+    
+    .athlete-name {
+        font-size: 13px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        width: 100%;
+    }
+    
+    .athlete-rank {
+        font-size: 11px;
+        padding: 1px 4px;
+    }
+    
+    /* ФИКС СТРЕЛОК И БАЛЛОВ */
+    .score-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2px;
+        min-width: 55px;
+        padding-left: 0;
+        margin-left: 0;
+        flex-shrink: 0;
+    }
+    
+    .rating-score {
+        font-size: 16px;
+        min-width: 25px;
+        margin-left: 0;
+        padding-left: 0;
+        flex-shrink: 0;
+    }
+    
+    /* Стрелки */
     .trend-up,
     .trend-down {
-        font-size: 14px;
+        font-size: 13px;
+        margin-left: 0;
+        margin-right: 0;
+        flex-shrink: 0;
     }
     
     .trend-same {
         font-size: 18px;
+        margin-left: 0;
+        margin-right: 0;
+        flex-shrink: 0;
     }
     
     .trend-new {
         font-size: 10px;
-        padding: 1px 4px;
+        padding: 1px 3px;
+        margin-left: 0;
+        margin-right: 0;
+        flex-shrink: 0;
     }
     
-    .score-wrapper {
-        gap: 0px;
-        min-width: 60px;
-        padding-left: 30px;  /* БЫЛО 40px - ИСПРАВЛЯЕМ */
+    /* ФИКС ФОТО */
+    .athlete-photo {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+    
+    /* НОМЕР */
+    .rating-number {
+        font-size: 18px;
+        min-width: 25px;
+        flex-shrink: 0;
     }
 }
 
@@ -760,6 +821,7 @@ body {
         gap: 0px;
     }
 }
+
 
 
 
