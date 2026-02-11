@@ -662,6 +662,7 @@ body {
     .score-wrapper {
         gap: 0px;
         min-width: 60px;
+        padding-left: 10px;  /* БЫЛО 40px - ИСПРАВЛЯЕМ */
     }
 }
 
@@ -758,5 +759,6 @@ body {
         gap: 0px;
     }
 }
+
 
 
