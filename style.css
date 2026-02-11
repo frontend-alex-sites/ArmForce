@@ -388,22 +388,6 @@ body {
     color: #ffc93f;
 }
 
-.rating-score {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: right;
-    min-width: 50px;
-    margin-left: auto;
-}
-
-.rating-score.blue {
-    color: #C0C0C0;
-}
-
-.rating-score.red {
-    color: #C0C0C0;
-}
-
 .loading-spinner {
     width: 40px;
     height: 40px;
@@ -463,6 +447,90 @@ body {
     object-fit: cover;
 }
 
+/* ========== ОСНОВНЫЕ СТИЛИ РЕЙТИНГА ========== */
+
+/* Золотой цвет для номера 1 */
+.rating-number.gold {
+    color: #ffcb49 !important;
+}
+
+/* Контейнер для баллов и стрелки */
+.score-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;  /* ← МЕНЯЙ ЭТО - расстояние между стрелкой и баллами */
+    min-width: 70px;
+    margin-left: auto;
+}
+
+/* Баллы */
+.rating-score {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    min-width: 50px;
+}
+
+.rating-score.blue {
+    color: #C0C0C0;
+}
+
+.rating-score.red {
+    color: #C0C0C0;
+}
+
+/* ========== СТРЕЛКИ И ЗНАЧКИ ========== */
+
+/* Общие стили для всех значков */
+.trend-up, 
+.trend-down, 
+.trend-same, 
+.trend-new {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    line-height: 1;
+}
+
+/* Стрелка вверх */
+.trend-up {
+    color: #10b981;
+    font-size: 16px;
+    margin-left: 0;  /* ← МЕНЯЙ ЭТО - отступ слева */
+    margin-right: 0;
+}
+
+/* Стрелка вниз */
+.trend-down {
+    color: #ef4444;
+    font-size: 16px;
+    margin-left: 0;  /* ← МЕНЯЙ ЭТО - отступ слева */
+    margin-right: 0;
+}
+
+/* Черточка (без изменений) */
+.trend-same {
+    color: #f59e0b;
+    font-size: 20px;
+    margin-left: 0;  /* ← МЕНЯЙ ЭТО - отступ слева */
+    margin-right: 0;
+}
+
+/* NEW */
+.trend-new {
+    color: #8b5cf6;
+    font-size: 11px;
+    background: rgba(139, 92, 246, 0.15);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-left: 0;  /* ← МЕНЯЙ ЭТО - отступ слева */
+    margin-right: 0;
+}
+
+/* ========== АДАПТИВ ========== */
+
 /* Адаптив для телефонов (до 768px) */
 @media (max-width: 768px) {
     .header {
@@ -492,7 +560,6 @@ body {
         padding: 14px 20px;
     }
     
-    /* ГЛАВНОЕ МЕНЮ - ПРИКЛЕИВАЕМ К ШАПКЕ */
     .main-dropdown {
         position: absolute;
         top: 100%;
@@ -504,7 +571,6 @@ body {
         margin-top: 8px;
     }
     
-    /* ПОДМЕНЮ - ВЫЕЗЖАЕТ СПРАВА */
     .sub-dropdown {
         position: absolute;
         top: 0;
@@ -514,7 +580,6 @@ body {
         z-index: 1001;
     }
     
-    /* ВОЗРАСТ - ВЫЕЗЖАЕТ СПРАВА */
     .age-dropdown {
         position: absolute;
         top: 0;
@@ -553,6 +618,26 @@ body {
         transform: none;
         margin: 15px auto;
         text-align: center;
+    }
+    
+    /* Мобильные стрелки */
+    .trend-up,
+    .trend-down {
+        font-size: 14px;
+    }
+    
+    .trend-same {
+        font-size: 18px;
+    }
+    
+    .trend-new {
+        font-size: 10px;
+        padding: 1px 4px;
+    }
+    
+    .score-wrapper {
+        gap: 8px;
+        min-width: 60px;
     }
 }
 
@@ -585,7 +670,6 @@ body {
         padding: 14px 20px;
     }
     
-    /* ГЛАВНОЕ МЕНЮ - ПРИКЛЕИВАЕМ К ШАПКЕ */
     .main-dropdown {
         position: absolute;
         top: 100%;
@@ -597,7 +681,6 @@ body {
         margin-top: 8px;
     }
     
-    /* ПОДМЕНЮ - ВЫЕЗЖАЕТ СПРАВА */
     .sub-dropdown {
         position: absolute;
         top: 0;
@@ -607,7 +690,6 @@ body {
         z-index: 1001;
     }
     
-    /* ВОЗРАСТ - ВЫЕЗЖАЕТ СПРАВА */
     .age-dropdown {
         position: absolute;
         top: 0;
@@ -642,113 +724,9 @@ body {
     .city-flag {
         position: relative;
         left: 0;
-        top: 0px;
+        top: 0;
         transform: none;
         margin: 15px auto;
         text-align: center;
     }
 }
-
-/* Стрелки с разницей мест */
-.trend-up, .trend-down {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    font-size: 14px;
-}
-
-.trend-up {
-    color: #10b981;
-}
-
-.trend-down {
-    color: #ef4444;
-}
-
-@media (max-width: 768px) {
-    .trend-up, .trend-down {
-        font-size: 12px;
-    }
-}
-
-
-/* Золотой цвет для номера 1 */
-.rating-number.gold {
-    color: #ffcb49 !important;
-}
-
-/* Контейнер для баллов и стрелки */
-.score-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 2px;
-    min-width: 70px;
-    margin-left: auto;
-}
-
-/* Баллы */
-.rating-score {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: right;
-}
-
-.rating-score.blue {
-    color: #C0C0C0;
-}
-
-.rating-score.red {
-    color: #C0C0C0;
-}
-
-/* Стрелки слева от баллов */
-.trend-up {
-    color: #10b981;
-    font-size: 20px;
-    line-height: 1;
-    margin-right: 15px; /* ← добавил отступ справа */
-}
-
-.trend-down {
-    color: #ef4444;
-    font-size: 20px;
-    line-height: 1;
-    margin-right: 15px; /* ← добавил отступ справа */
-}
-
-.trend-same {
-    color: #f59e0b;
-    font-size: 20px;
-    line-height: 1;
-    margin-right: 15px; /* ← добавил отступ справа */
-}
-
-.trend-new {
-    color: #8b5cf6;
-    font-size: 11px;
-    background: rgba(139, 92, 246, 0.15);
-    padding: 2px 6px;
-    border-radius: 6px;
-    line-height: 1;
-    font-weight: bold;
-}
-
-.trend-up, .trend-down {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    font-size: 14px;
-}
-
-.trend-up {
-    color: #10b981;
-}
-
-.trend-down {
-    color: #ef4444;
-}
-
-
-
-
