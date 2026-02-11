@@ -670,3 +670,50 @@ body {
         font-size: 12px;
     }
 }
+
+/* Стрелки слева от баллов */
+.trend-up {
+    color: #10b981;
+    font-size: 20px;
+    line-height: 1;
+    margin-right: 15px; /* ← добавил отступ справа */
+}
+
+.trend-down {
+    color: #ef4444;
+    font-size: 20px;
+    line-height: 1;
+    margin-right: 15px; /* ← добавил отступ справа */
+}
+
+.trend-same {
+    color: #f59e0b;
+    font-size: 20px;
+    line-height: 1;
+    margin-right: 15px; /* ← добавил отступ справа */
+}
+
+.trend-new {
+    color: #8b5cf6;
+    font-size: 11px;
+    background: rgba(139, 92, 246, 0.15);
+    padding: 2px 6px;
+    border-radius: 6px;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.trend-up, .trend-down {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 14px;
+}
+
+.trend-up {
+    color: #10b981;
+}
+
+.trend-down {
+    color: #ef4444;
+}
