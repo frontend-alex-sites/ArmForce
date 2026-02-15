@@ -513,7 +513,7 @@ body {
 /* ========== АДАПТИВ ТЕЛЕФОНЫ ========== */
 @media (max-width: 768px) {
     .header {
-        padding: 15px;
+        padding: 5px;
         flex-direction: column;
         gap: 0px;
         min-height: auto;
@@ -738,6 +738,7 @@ body {
         text-align: center;
     }
 }
+
 
 
 
