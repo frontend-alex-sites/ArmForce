@@ -641,11 +641,11 @@ body {
     .city-flag {
         position: relative;
         left: 0;
-        top: 0;
+        top: -20px;
         transform: none;
         margin: 15px auto;
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: -8px;
     }
 }
 
@@ -731,13 +731,14 @@ body {
     .city-flag {
         position: relative;
         left: 0;
-        top: 0;
+        top: -20px;
         transform: none;
         margin: 15px auto;
         text-align: center;
-        margin-bottom: 30px !important;
+        margin-bottom: -8px !important;
     }
 }
+
 
 
 
