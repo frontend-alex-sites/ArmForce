@@ -790,6 +790,89 @@ body {
     }
 }
 
+/* ===== ПОЛЕ ПОИСКА ===== */
+.search-input {
+    background-color: #3d3d3d;
+    border: 1px solid #4d4d4d;
+    border-radius: 6px;
+    padding: 8px 15px;
+    color: #ffffff;
+    font-size: 14px;
+    width: 200px;
+    transition: all 0.2s;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #aaaaaa;
+}
+
+.search-input:focus {
+    border-color: #fbbf24;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+}
+
+@media (max-width: 1024px) {
+    .header {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tournaments-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        max-width: 150px;
+        white-space: normal;
+        text-align: center;
+        font-size: 14px;
+        padding: 8px 12px;
+        left: 100px;
+    }
+
+    /* 🔍 ПОИСК СЛЕВА */
+    .search-input {
+        position: absolute;
+        margin-left: -235px;            /* прижат к левому краю */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 180px;
+        z-index: 10;
+        width: 110px;              /* базовая ширина */
+        max-width: 30vw;           /* не больше 40% ширины экрана */
+        min-width: 30px;          /* не меньше 100px */
+        z-index: 10;
+    }
+
+    .city-flag {
+        position: relative;
+        margin: 0 auto;
+    }
+}
+/* ===== ПК (1025px и больше) ===== */
+@media (min-width: 1025px) {
+    .tournaments-button {
+        position: absolute;
+        left: 435px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* ПОИСК СПРАВА, РЯДОМ С ТУРНИРАМИ */
+    .search-input {
+        position: absolute;
+        right: 70px;        /* отрегулируй под свою ширину */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 200px;
+        z-index: 10;
+    }
+}
 
 
 
