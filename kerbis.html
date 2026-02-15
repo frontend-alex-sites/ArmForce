@@ -45,6 +45,8 @@
         .tournament-meta i {
             color: #fbbf24;
             margin-right: 8px;
+            opacity: 1;
+            font-size: 20px;
         }
 
         .section-title {
@@ -52,7 +54,7 @@
             font-size: 22px;
             margin: 30px 0 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #fbbf24;
+            border-bottom: 2px solid #4d4d4d;
         }
 
         .info-grid {
@@ -70,12 +72,20 @@
         }
 
         .info-card h3 {
-            color: #fbbf24;
+            color: #ffffff;
             font-size: 18px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 8px;
+            border-bottom: 1px solid #4d4d4d;
+            padding-bottom: 10px;
+        }
+
+        .info-card h3 i {
+            color: #fbbf24;
+            opacity: 1;
+            font-size: 18px;
         }
 
         .info-card p {
@@ -85,10 +95,12 @@
             line-height: 1.6;
         }
 
-        .info-card i {
+        .info-card p i {
             color: #fbbf24;
+            opacity: 1;
             width: 20px;
             margin-right: 8px;
+            font-size: 14px;
         }
 
         .weight-categories {
@@ -143,7 +155,8 @@
         }
 
         .category-tag strong {
-            color: #fbbf24;
+            color: #ffffff;
+            font-weight: 700;
             margin-right: 5px;
         }
 
@@ -167,6 +180,14 @@
             color: #fbbf24;
             font-weight: bold;
             min-width: 100px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .program-time i {
+            color: #fbbf24;
+            font-size: 16px;
         }
 
         .program-desc {
@@ -179,23 +200,32 @@
         }
 
         .contacts-list li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #cccccc;
+            display: flex;
+            flex-direction: column;
         }
 
-        .contacts-list i {
+        .contact-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .contact-name i {
             color: #fbbf24;
+            opacity: 1;
             width: 20px;
-            margin-right: 10px;
+            font-size: 16px;
         }
 
-        .contacts-list a {
+        .contact-phone {
+            margin-left: 28px;
             color: #fbbf24;
-            text-decoration: none;
-        }
-
-        .contacts-list a:hover {
-            text-decoration: underline;
+            font-size: 14px;
         }
 
         .points-system {
@@ -216,7 +246,7 @@
         }
 
         .point-place {
-            color: #fbbf24;
+            color: #ffffff;
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 5px;
@@ -350,23 +380,38 @@
                 <div class="info-card">
                     <h3><i class="fas fa-clock"></i> Расписание</h3>
                     <p><i class="fas fa-calendar-day"></i> <strong>27 февраля</strong></p>
-                    <p>17:00-19:00 - Взвешивание (ул. Матросова, 20А)</p>
-                    <p>19:00-20:00 - Заседание судейской коллегии</p>
+                    <p><i class="fas fa-clock"></i> 17:00-19:00 - Взвешивание (ул. Матросова, 20А)</p>
+                    <p><i class="fas fa-clock"></i> 19:00-20:00 - Заседание судейской коллегии</p>
                     <p><i class="fas fa-calendar-day"></i> <strong>28 февраля</strong></p>
-                    <p>09:00-10:00 - Дополнительное взвешивание</p>
-                    <p>10:10-13:50 - Левая рука</p>
-                    <p>14:00-17:00 - Правая рука</p>
-                    <p>17:30-18:00 - Награждение</p>
+                    <p><i class="fas fa-clock"></i> 09:00-10:00 - Дополнительное взвешивание</p>
+                    <p><i class="fas fa-clock"></i> 10:10-13:50 - Левая рука</p>
+                    <p><i class="fas fa-clock"></i> 14:00-17:00 - Правая рука</p>
+                    <p><i class="fas fa-clock"></i> 17:30-18:00 - Награждение</p>
                 </div>
 
                 <div class="info-card">
                     <h3><i class="fas fa-phone"></i> Контакты</h3>
                     <ul class="contacts-list">
-                        <li><i class="fas fa-phone"></i> Лыков Геннадий: 8-902-924-36-60</li>
-                        <li><i class="fas fa-phone"></i> Миляновский Евгений: 8-923-284-87-08</li>
-                        <li><i class="fas fa-phone"></i> Кондрашов Никита: 8-902-910-18-47</li>
-                        <li><i class="fas fa-phone"></i> Быченков Денис: 8-983-577-66-08</li>
-                        <li><i class="fas fa-phone"></i> Бакач Антон: 8-983-266-00-44</li>
+                        <li>
+                            <span class="contact-name"><i class="fas fa-user"></i> Лыков Геннадий Николаевич</span>
+                            <span class="contact-phone">8-902-924-36-60</span>
+                        </li>
+                        <li>
+                            <span class="contact-name"><i class="fas fa-user"></i> Миляновский Евгений Андреевич</span>
+                            <span class="contact-phone">8-923-284-87-08</span>
+                        </li>
+                        <li>
+                            <span class="contact-name"><i class="fas fa-user"></i> Кондрашов Никита Анатольевич</span>
+                            <span class="contact-phone">8-902-910-18-47</span>
+                        </li>
+                        <li>
+                            <span class="contact-name"><i class="fas fa-user"></i> Быченков Денис Александрович</span>
+                            <span class="contact-phone">8-983-577-66-08</span>
+                        </li>
+                        <li>
+                            <span class="contact-name"><i class="fas fa-user"></i> Бакач Антон Михайлович</span>
+                            <span class="contact-phone">8-983-266-00-44</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -495,5 +540,4 @@
         </div>
     </div>
 </body>
-
 </html>
