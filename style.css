@@ -846,7 +846,6 @@ body {
         width: 110px;              /* базовая ширина */
         max-width: 30vw;           /* не больше 40% ширины экрана */
         min-width: 30px;          /* не меньше 100px */
-        z-index: 10;
     }
 
     .city-flag {
@@ -873,6 +872,7 @@ body {
         z-index: 10;
     }
 }
+
 
 
 
