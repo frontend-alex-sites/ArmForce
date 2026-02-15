@@ -739,6 +739,57 @@ body {
     }
 }
 
+/* ===== КНОПКА ТУРНИРЫ ===== */
+.tournaments-button {
+    background-color: #fcc53b;
+    border: 1px solid #4d4d4d;
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: #171717;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.tournaments-button:hover {
+    box-shadow: 0 0 15px #ffffff63;
+}
+
+
+/* ===== ПК (1025px и больше) ===== */
+@media (min-width: 1025px) {
+    .tournaments-button {
+        position: absolute;
+        left: 435px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+/* ===== ЕДИНЫЙ АДАПТИВ ДЛЯ ПЛАНШЕТОВ И ТЕЛЕФОНОВ ===== */
+@media (max-width: 1024px) {
+    .header {
+        position: relative;
+    }
+
+    .tournaments-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        max-width: 150px;
+        white-space: normal;
+        text-align: center;
+        font-size: 14px;
+        padding: 8px 12px;
+        left: 100px;
+    }
+}
+
 
 
 
